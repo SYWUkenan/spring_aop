@@ -9,6 +9,18 @@
     <context:component-scan base-package="cn.yswu"></context:component-scan>
 
     <!--开启aop注解使用功能-->
-    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+    <!--<aop:aspectj-autoproxy></aop:aspectj-autoproxy>-->
+
+    <!--aop 的xml方式实现-->
+    <aop:config>
+        <aop:aspect ref="logAspect3">
+            <aop:pointcut id="cutAllService" expression="execution(* cn.yswu.service.impl.*.*(..))"/>
+            <aop:before method="before" pointcut="execution(* cn.yswu.service.impl.*.*(..)) &amp;&amp; @annotation(logger)"/>
+            <aop:after method="after"  pointcut="execution(* cn.yswu.service.impl.*.*(..)) &amp;&amp; @annotation(logger)"></aop:after>
+            <aop:after-returning method="afterReturning" returning="returnValue" pointcut-ref="cutAllService"></aop:after-returning>
+            <aop:after-throwing method="afterThrowing" throwing="ex" pointcut-ref="cutAllService"></aop:after-throwing>
+            <aop:around method="arroud" pointcut-ref="cutAllService"></aop:around>
+        </aop:aspect>
+    </aop:config>
 
 </beans>

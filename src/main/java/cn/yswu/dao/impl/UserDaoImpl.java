@@ -23,7 +23,7 @@ public class UserDaoImpl implements IUserDao {
         if(id==null) {
             throw new Exception("id不能为null");
         }
-        return null;
+        return new User();
     }
 
     /**

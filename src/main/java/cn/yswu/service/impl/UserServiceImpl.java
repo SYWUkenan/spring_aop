@@ -3,6 +3,7 @@ package cn.yswu.service.impl;
 import cn.yswu.dao.IUserDao;
 import cn.yswu.entity.User;
 import cn.yswu.service.IUserService;
+import jdk.nashorn.internal.runtime.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ public class UserServiceImpl implements IUserService{
     IUserDao userDao;
 
 
+    @Logger(name="用户查询方法")
     public User select(Integer id) throws Exception {
         System.out.println("查询user");
 
@@ -25,6 +27,7 @@ public class UserServiceImpl implements IUserService{
     }
 
 
+    @Logger
     public void add(User user) throws Exception {
         System.out.println("增加user");
         userDao.add(user);

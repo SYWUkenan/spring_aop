@@ -19,10 +19,9 @@ public class SpringTest {
         ClassPathXmlApplicationContext ioc = new ClassPathXmlApplicationContext("classpath:/spring.xml");
         //jdk代理的动态代理类
         IUserService bean = ioc.getBean(IUserService.class);
-
-        bean.add(new User());
+//        bean.add(new User());
         System.out.println("-----------");
-        bean.select(1);
+        bean.select(2);
 
         System.out.println(bean.getClass());
     }
